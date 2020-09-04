@@ -16,11 +16,11 @@ function App() {
                 <div className="contact">
                   <div className="contact-user">
                     <div className="contact-user-foto">
-                      <a href="/"><img src="" alt="" /></a>
+                      <a href="/" label="user-foto"><img src="" alt="" /></a>
                     </div>
                     <div className="contact-user-info">
                       <div className="contact-user-top">
-                        <a href="" className="contact-user-name">
+                        <a href="/" className="contact-user-name">
                           john_snow
                         </a>
                       </div>
@@ -29,11 +29,11 @@ function App() {
                   </div>
                   <div className="contact-user active">
                     <div className="contact-user-foto">
-                      <a href=""><img src="" alt="" /></a>
+                      <a href="/" label="user-foto"><img src="" alt="" /></a>
                     </div>
                     <div className="contact-user-info">
                       <div className="contact-user-top">
-                        <a href="" className="contact-user-name">
+                        <a href="/" className="contact-user-name">
                           martin
                         </a>
                       </div>
@@ -42,11 +42,11 @@ function App() {
                   </div>
                   <div className="contact-user">
                     <div className="contact-user-foto">
-                      <a href=""><img src="" alt="" /></a>
+                      <a href="/" label="user-foto"><img src="" alt="" /></a>
                     </div>
                     <div className="contact-user-info">
                       <div className="contact-user-top">
-                        <a href="" className="contact-user-name">
+                        <a href="/" className="contact-user-name">
                           sherlock
                         </a>
                       </div>
@@ -55,11 +55,11 @@ function App() {
                   </div>
                   <div className="contact-user">
                     <div className="contact-user-foto">
-                      <a href=""><img src="" alt="" /></a>
+                      <a href="/" label="user-foto"><img src="" alt="" /></a>
                     </div>
                     <div className="contact-user-info">
                       <div className="contact-user-top">
-                        <a href="" className="contact-user-name">
+                        <a href="/" className="contact-user-name">
                           monica
                         </a>
                       </div>
@@ -69,11 +69,11 @@ function App() {
 
                   <div className="contact-user">
                     <div className="contact-user-foto">
-                      <a href=""><img src="" alt="" /></a>
+                      <a href="/" label="user-foto"><img src="" alt="" /></a>
                     </div>
                     <div className="contact-user-info">
                       <div className="contact-user-top">
-                        <a href="" className="contact-user-name">
+                        <a href="/" label="user-name" className="contact-user-name">
                           dallas
                         </a>
                       </div>
@@ -89,7 +89,7 @@ function App() {
                     <div className="chat">
                       <div className="chat-message">
                         <div className="chat-message-foto">
-                          <a href=""><img src="" alt="" /></a>
+                          <img src="" alt="" />
                         </div>
                         <div className="chat-message-text">
                           My name is martin
@@ -98,7 +98,7 @@ function App() {
                       </div>
                       <div className="chat-message user-message">
                         <div className="chat-message-foto">
-                          <a href=""><img src="" alt="" /></a>
+                          <img src="" alt="" />
                         </div>
                         <div className="chat-message-text">
                           You are so stupid...
@@ -107,7 +107,7 @@ function App() {
                       </div>
                       <div className="chat-message">
                         <div className="chat-message-foto">
-                          <a href=""><img src="" alt="" /></a>
+                          <img src="" alt="" />
                         </div>
                         <div className="chat-message-text">
                           London is the capital of great britain.
@@ -116,7 +116,7 @@ function App() {
                       </div>
                       <div className="chat-message user-message">
                         <div className="chat-message-foto">
-                          <a href=""><img src="" alt="" /></a>
+                          <img src="" alt="" />
                         </div>
                         <div className="chat-message-text">
                           Hello, bot
