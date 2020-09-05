@@ -1,4 +1,6 @@
 import React from 'react';
+import BotsMenu from './components/BotsMenu';
+import Chat from './components/chat';
 import './App.css';
 import './css/bootstrap-reboot.css';
 import './css/chat-block.css';
@@ -12,131 +14,12 @@ function App() {
         <div className="row">
           <div className="col-9">
             <div className="chat-wrap">
-              <div className="contacts-wrap">
-                <div className="contact">
-                  <div className="contact-user">
-                    <div className="contact-user-foto">
-                      <a href="/" label="user-foto"><img src="" alt="" /></a>
-                    </div>
-                    <div className="contact-user-info">
-                      <div className="contact-user-top">
-                        <a href="/" className="contact-user-name">
-                          john_snow
-                        </a>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div className="contact-user active">
-                    <div className="contact-user-foto">
-                      <a href="/" label="user-foto"><img src="" alt="" /></a>
-                    </div>
-                    <div className="contact-user-info">
-                      <div className="contact-user-top">
-                        <a href="/" className="contact-user-name">
-                          martin
-                        </a>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div className="contact-user">
-                    <div className="contact-user-foto">
-                      <a href="/" label="user-foto"><img src="" alt="" /></a>
-                    </div>
-                    <div className="contact-user-info">
-                      <div className="contact-user-top">
-                        <a href="/" className="contact-user-name">
-                          sherlock
-                        </a>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div className="contact-user">
-                    <div className="contact-user-foto">
-                      <a href="/" label="user-foto"><img src="" alt="" /></a>
-                    </div>
-                    <div className="contact-user-info">
-                      <div className="contact-user-top">
-                        <a href="/" className="contact-user-name">
-                          monica
-                        </a>
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div className="contact-user">
-                    <div className="contact-user-foto">
-                      <a href="/" label="user-foto"><img src="" alt="" /></a>
-                    </div>
-                    <div className="contact-user-info">
-                      <div className="contact-user-top">
-                        <a href="/" label="user-name" className="contact-user-name">
-                          dallas
-                        </a>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <BotsMenu />
               {/* <!--class="chat-block blocked" for blocked chat--> */}
               <div className="chat-block">
                 <div className="blocked-wrap">
-                  <div style={{ position: 'relative' }}>
-                    <div className="chat">
-                      <div className="chat-message">
-                        <div className="chat-message-foto">
-                          <img src="" alt="" />
-                        </div>
-                        <div className="chat-message-text">
-                          My name is martin
-                        </div>
-                        <div className="chat-message-time">2 hours ago</div>
-                      </div>
-                      <div className="chat-message user-message">
-                        <div className="chat-message-foto">
-                          <img src="" alt="" />
-                        </div>
-                        <div className="chat-message-text">
-                          You are so stupid...
-                        </div>
-                        <div className="chat-message-time">2 hours ago</div>
-                      </div>
-                      <div className="chat-message">
-                        <div className="chat-message-foto">
-                          <img src="" alt="" />
-                        </div>
-                        <div className="chat-message-text">
-                          London is the capital of great britain.
-                        </div>
-                        <div className="chat-message-time">2 hours ago</div>
-                      </div>
-                      <div className="chat-message user-message">
-                        <div className="chat-message-foto">
-                          <img src="" alt="" />
-                        </div>
-                        <div className="chat-message-text">
-                          Hello, bot
-                        </div>
-                        <div className="chat-message-time">2 hours ago</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="chat-form">
-                    <form action="">
-                      <div className="textarea-wrap">
-                        <textarea placeholder="Text" />
-                      </div>
-                      <div className="textarea-count-wrap">
-                        <div className="checkbox-wrap">
-                          Press Enter to send
-                        </div>
-                      </div>
-                    </form>
-                  </div>
+                  <Chat />
+
                 </div>
               </div>
             </div>
