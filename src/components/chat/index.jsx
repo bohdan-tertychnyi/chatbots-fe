@@ -1,17 +1,25 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Messages from './Messages';
 import Form from './Form';
 
 const Chat = ({ activeTab }) => {
-  const [messages, setMessages] = useState([]);
+  const [messagesMap, setMessagesMap] = useState({});
+
+  const messagesList = useMemo(() => messagesMap[activeTab] || [], [messagesMap, activeTab]);
+
+  const nextMessages = useCallback(
+    (message) => ({ ...messagesMap, [activeTab]: [message, ...messagesList] }),
+    [activeTab, messagesList, messagesMap],
+  );
+
   const addMessage = useCallback((message) => {
-    setMessages([message, ...messages]);
-  }, [messages, setMessages]);
+    setMessagesMap(nextMessages(message));
+  }, [setMessagesMap, nextMessages]);
 
   return (
     <>
-      <Messages messages={messages} activeTab={activeTab} />
+      <Messages messages={messagesList} activeTab={activeTab} />
       <Form addMessage={addMessage} />
     </>
   );
