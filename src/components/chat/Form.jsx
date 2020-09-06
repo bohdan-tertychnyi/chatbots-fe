@@ -1,16 +1,28 @@
 import React, { useCallback, useState, useRef } from 'react';
+import PropTypes from 'prop-types';
+
+import { requestBot } from '../../bots';
 
 const ENTER_KEY = 'Enter';
 
-const Form = () => {
+const Form = ({ addMessage }) => {
   const [message, setMessage] = useState('');
+
   const textarea = useRef(null);
+
   const handleKeyDown = useCallback((e) => {
     if (e.key === ENTER_KEY) {
       e.preventDefault();
-      setMessage('');
+
+      if (message) {
+        requestBot({ botId: 'qwerty', message });
+
+        addMessage({ value: message, createTime: Date.now(), author: 'user' });
+
+        setMessage('');
+      }
     }
-  }, [setMessage]);
+  }, [setMessage, message, addMessage]);
 
   return (
     <div className="chat-form">
@@ -32,6 +44,10 @@ const Form = () => {
       </form>
     </div>
   );
+};
+
+Form.propTypes = {
+  addMessage: PropTypes.func.isRequired,
 };
 
 export default Form;
