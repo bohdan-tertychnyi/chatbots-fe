@@ -4,19 +4,19 @@ import ContactUser from './ContactUser';
 import { BOTNAME_LIST } from '../bots';
 
 const BotsMenu = ({ activeTab, setActiveTab }) => {
-  const handleItemClick = useCallback((index) => {
-    setActiveTab(index);
+  const handleItemClick = useCallback((item) => {
+    setActiveTab(item);
   }, [setActiveTab]);
 
   return (
     <div className="contacts-wrap">
       <div className="contact">
-        {BOTNAME_LIST.map((item, index) => (
+        {BOTNAME_LIST.map((item) => (
           <ContactUser
             key={item}
             name={item}
-            isActive={index === activeTab}
-            onClick={() => handleItemClick(index)}
+            isActive={item === activeTab}
+            onClick={() => handleItemClick(item)}
           />
         ))}
       </div>
@@ -25,7 +25,7 @@ const BotsMenu = ({ activeTab, setActiveTab }) => {
 };
 
 BotsMenu.propTypes = {
-  activeTab: PropTypes.number.isRequired,
+  activeTab: PropTypes.string.isRequired,
   setActiveTab: PropTypes.func.isRequired,
 };
 

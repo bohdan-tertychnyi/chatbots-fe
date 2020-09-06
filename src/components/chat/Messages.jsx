@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Message from './Message';
+import { BOTNAME_LIST } from '../../bots';
 
 const COLOR_LIST = [
   'linear-gradient(0.08deg, #607D8B 0.09%, #90A4AE 99.95%)',
@@ -11,7 +12,8 @@ const COLOR_LIST = [
 ];
 
 const Messages = ({ activeTab, messages }) => {
-  const background = useMemo(() => COLOR_LIST[activeTab] || COLOR_LIST[1], [activeTab]);
+  const botIndex = BOTNAME_LIST.indexOf(activeTab) || 0;
+  const background = useMemo(() => COLOR_LIST[botIndex], [botIndex]);
 
   return (
     <div style={{ position: 'relative' }}>
@@ -28,7 +30,7 @@ Messages.propTypes = {
     createTime: PropTypes.number.isRequired,
     author: PropTypes.oneOf(['user', 'bot']).isRequired,
   })).isRequired,
-  activeTab: PropTypes.number.isRequired,
+  activeTab: PropTypes.string.isRequired,
 };
 
 export default Messages;

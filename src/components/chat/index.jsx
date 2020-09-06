@@ -1,32 +1,56 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
 import Messages from './Messages';
 import Form from './Form';
+import { handleBotResponse, BOTNAME_LIST } from '../../bots';
+
+const initialMessagesMap = {};
+
+BOTNAME_LIST.forEach((item) => {
+  initialMessagesMap[item] = [];
+});
 
 const Chat = ({ activeTab }) => {
-  const [messagesMap, setMessagesMap] = useState({});
+  const [messagesMap, setMessagesMap] = useState(initialMessagesMap);
 
-  const messagesList = useMemo(() => messagesMap[activeTab] || [], [messagesMap, activeTab]);
-
-  const nextMessages = useCallback(
-    (message) => ({ ...messagesMap, [activeTab]: [message, ...messagesList] }),
-    [activeTab, messagesList, messagesMap],
+  const messagesList = useCallback(
+    (tab = activeTab) => messagesMap[tab] || [],
+    [messagesMap, activeTab],
   );
 
-  const addMessage = useCallback((message) => {
-    setMessagesMap(nextMessages(message));
-  }, [setMessagesMap, nextMessages]);
+  const addMessage = useCallback(({ message, tab = activeTab }) => {
+    const prevMessagesLits = messagesList(tab);
+    const nextMessagesList = ([message, ...prevMessagesLits]);
+    const nextMessages = ({ ...messagesMap, [tab]: nextMessagesList });
+
+    setMessagesMap(nextMessages);
+  }, [messagesMap, messagesList, activeTab]);
+
+  useEffect(() => {
+    handleBotResponse({
+      cb: (data) => {
+        const { message: value, botId } = data;
+        const message = { value, createTime: Date.now(), author: 'bot' };
+
+        addMessage({ message, tab: botId });
+      },
+    });
+  }, [addMessage]);
 
   return (
     <>
-      <Messages messages={messagesList} activeTab={activeTab} />
-      <Form addMessage={addMessage} />
+      <Messages messages={messagesList()} activeTab={activeTab} />
+      <Form addMessage={addMessage} botId={activeTab} />
     </>
   );
 };
 
 Chat.propTypes = {
-  activeTab: PropTypes.number.isRequired,
+  activeTab: PropTypes.string.isRequired,
 };
 
 export default Chat;

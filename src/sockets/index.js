@@ -7,8 +7,8 @@ export const send = ({ type, data }) => {
   socket.emit(type, data);
 };
 
-export const watch = ({ type }) => { // TODO: use callback
-  socket.on(type, (data) => {
-    console.log(data);
-  });
+export const watch = ({ type, cb = () => {} }) => {
+  socket.off(type); // in order to prevent memory leak
+
+  socket.on(type, (data) => cb(data));
 };

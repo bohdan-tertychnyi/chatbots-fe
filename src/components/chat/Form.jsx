@@ -5,7 +5,7 @@ import { requestBot } from '../../bots';
 
 const ENTER_KEY = 'Enter';
 
-const Form = ({ addMessage }) => {
+const Form = ({ addMessage, botId }) => {
   const [message, setMessage] = useState('');
 
   const textarea = useRef(null);
@@ -15,14 +15,14 @@ const Form = ({ addMessage }) => {
       e.preventDefault();
 
       if (message) {
-        requestBot({ botId: 'qwerty', message });
+        requestBot({ botId, message });
 
-        addMessage({ value: message, createTime: Date.now(), author: 'user' });
+        addMessage({ message: { value: message, createTime: Date.now(), author: 'user' } });
 
         setMessage('');
       }
     }
-  }, [setMessage, message, addMessage]);
+  }, [setMessage, message, addMessage, botId]);
 
   return (
     <div className="chat-form">
@@ -48,6 +48,7 @@ const Form = ({ addMessage }) => {
 
 Form.propTypes = {
   addMessage: PropTypes.func.isRequired,
+  botId: PropTypes.string.isRequired,
 };
 
 export default Form;

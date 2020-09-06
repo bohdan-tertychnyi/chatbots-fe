@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import BotsMenu from './components/BotsMenu';
 import Chat from './components/chat';
+import { BOTNAME_LIST } from './bots';
+
+const DEFAULT_TAB = BOTNAME_LIST[0];
 
 function App() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState(DEFAULT_TAB);
 
   return (
     <main className="main">
