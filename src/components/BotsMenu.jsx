@@ -1,13 +1,12 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import ContactUser from './ContactUser';
+import { BOTNAME_LIST } from '../bots';
 
-const BOTNAME_LIST = ['john_snow', 'martin', 'sherlock', 'monica', 'dallas'];
-
-const BotsMenu = () => {
-  const [activeItem, setActiveItem] = useState(0);
+const BotsMenu = ({ activeTab, setActiveTab }) => {
   const handleItemClick = useCallback((index) => {
-    setActiveItem(index);
-  }, []);
+    setActiveTab(index);
+  }, [setActiveTab]);
 
   return (
     <div className="contacts-wrap">
@@ -16,13 +15,18 @@ const BotsMenu = () => {
           <ContactUser
             key={item}
             name={item}
-            isActive={index === activeItem}
+            isActive={index === activeTab}
             onClick={() => handleItemClick(index)}
           />
         ))}
       </div>
     </div>
   );
+};
+
+BotsMenu.propTypes = {
+  activeTab: PropTypes.number.isRequired,
+  setActiveTab: PropTypes.func.isRequired,
 };
 
 export default BotsMenu;

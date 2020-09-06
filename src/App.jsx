@@ -1,25 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BotsMenu from './components/BotsMenu';
 import Chat from './components/chat';
-import './App.css';
-import './css/bootstrap-reboot.css';
-import './css/chat-block.css';
-import './css/chat.css';
-import './css/style.css';
 
 function App() {
+  const [activeTab, setActiveTab] = useState(0);
+
   return (
     <main className="main">
       <div className="container">
         <div className="row">
           <div className="col-9">
             <div className="chat-wrap">
-              <BotsMenu />
+              <BotsMenu activeTab={activeTab} setActiveTab={setActiveTab} />
               {/* <!--class="chat-block blocked" for blocked chat--> */}
               <div className="chat-block">
                 <div className="blocked-wrap">
-                  <Chat />
-
+                  <Chat activeTab={activeTab} />
                 </div>
               </div>
             </div>
@@ -57,8 +53,10 @@ function App() {
                 </g>
               </g>
             </svg>
-            {/* Тестовое задание на позицию: <br />
-                <b style="float:right">Frontend Developer</b> */}
+            Тестовое задание на позицию:
+            {' '}
+            <br />
+            <b style={{ float: 'right' }}>Frontend Developer</b>
           </div>
         </div>
       </div>

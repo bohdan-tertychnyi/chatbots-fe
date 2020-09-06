@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import Messages from './Messages';
 import Form from './Form';
 
-const Chat = () => {
+const Chat = ({ activeTab }) => {
   const [messages, setMessages] = useState([]);
   const addMessage = useCallback((message) => {
     setMessages([message, ...messages]);
@@ -10,10 +11,14 @@ const Chat = () => {
 
   return (
     <>
-      <Messages messages={messages} />
+      <Messages messages={messages} activeTab={activeTab} />
       <Form addMessage={addMessage} />
     </>
   );
+};
+
+Chat.propTypes = {
+  activeTab: PropTypes.number.isRequired,
 };
 
 export default Chat;
