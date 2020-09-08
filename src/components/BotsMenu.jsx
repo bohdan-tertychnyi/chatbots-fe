@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import ContactUser from './ContactUser';
-import { BOTNAME_LIST } from '../bots';
 
-const BotsMenu = ({ activeTab, setActiveTab }) => {
+const BotsMenu = ({ bots, activeTab, setActiveTab }) => {
   const handleItemClick = useCallback((item) => {
     setActiveTab(item);
   }, [setActiveTab]);
@@ -11,12 +10,13 @@ const BotsMenu = ({ activeTab, setActiveTab }) => {
   return (
     <div className="contacts-wrap">
       <div className="contact">
-        {BOTNAME_LIST.map((item) => (
+        {bots.map(({ name, icon }) => (
           <ContactUser
-            key={item}
-            name={item}
-            isActive={item === activeTab}
-            onClick={() => handleItemClick(item)}
+            key={name}
+            name={name}
+            isActive={name === activeTab}
+            imgSrc={icon}
+            onClick={() => handleItemClick(name)}
           />
         ))}
       </div>
@@ -27,6 +27,7 @@ const BotsMenu = ({ activeTab, setActiveTab }) => {
 BotsMenu.propTypes = {
   activeTab: PropTypes.string.isRequired,
   setActiveTab: PropTypes.func.isRequired,
+  bots: PropTypes.arrayOf(PropTypes.object).isRequired, // TODO: fix with TS?
 };
 
 export default BotsMenu;

@@ -2,19 +2,22 @@ import React, {
   useEffect,
   useState,
   useCallback,
+  useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
 import Messages from './Messages';
 import Form from './Form';
-import { handleBotResponse, BOTNAME_LIST } from '../../bots';
+import { handleBotResponse } from '../../bots';
 
-const initialMessagesMap = {};
+const Chat = ({ activeTab, bots }) => {
+  const initialMessagesMap = useMemo(() => ({}), []);
 
-BOTNAME_LIST.forEach((item) => {
-  initialMessagesMap[item] = [];
-});
+  useEffect(() => {
+    bots.forEach(({ name, messageHistory }) => {
+      initialMessagesMap[name] = messageHistory;
+    });
+  }, [bots, initialMessagesMap]);
 
-const Chat = ({ activeTab }) => {
   const [messagesMap, setMessagesMap] = useState(initialMessagesMap);
 
   const messagesList = useCallback(
@@ -43,7 +46,7 @@ const Chat = ({ activeTab }) => {
 
   return (
     <>
-      <Messages messages={messagesList()} activeTab={activeTab} />
+      <Messages bots={bots} messages={messagesList()} activeTab={activeTab} />
       <Form addMessage={addMessage} botId={activeTab} />
     </>
   );
@@ -51,6 +54,7 @@ const Chat = ({ activeTab }) => {
 
 Chat.propTypes = {
   activeTab: PropTypes.string.isRequired,
+  bots: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Chat;

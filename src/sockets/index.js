@@ -1,6 +1,10 @@
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:3337'); // TODO: to config
+import config from '../config';
+
+const { apiUrl } = config;
+
+const socket = io(apiUrl);
 socket.on('connect', () => console.log('connect'));
 
 export const send = ({ type, data }) => {

@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BotsMenu from './components/BotsMenu';
 import Chat from './components/chat';
-import { BOTNAME_LIST } from './bots';
-
-const DEFAULT_TAB = BOTNAME_LIST[0];
+import { fetchBots } from './bots';
 
 function App() {
-  const [activeTab, setActiveTab] = useState(DEFAULT_TAB);
+  const [bots, setBots] = useState([]);
+
+  const [activeTab, setActiveTab] = useState('');
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetchBots();
+
+      setBots(response);
+      setActiveTab(response[0].name);
+    })();
+  }, []);
 
   return (
     <main className="main">
@@ -14,11 +23,11 @@ function App() {
         <div className="row">
           <div className="col-9">
             <div className="chat-wrap">
-              <BotsMenu activeTab={activeTab} setActiveTab={setActiveTab} />
+              <BotsMenu bots={bots} activeTab={activeTab} setActiveTab={setActiveTab} />
               {/* <!--class="chat-block blocked" for blocked chat--> */}
               <div className="chat-block">
                 <div className="blocked-wrap">
-                  <Chat activeTab={activeTab} />
+                  <Chat activeTab={activeTab} bots={bots} />
                 </div>
               </div>
             </div>
@@ -26,13 +35,11 @@ function App() {
           <div className="col-3" style={{ color: 'white' }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-                  // xmlns:xlink="http://www.w3.org/1999/xlink"
               viewBox="0 0 195.60606384277344 50"
               version="1.1"
               preserveAspectRatio="xMidYMid meet"
               style={{ width: '100%', padding: '5px' }}
             >
-
               <desc>Created with Sketch.</desc>
               <defs>
                 <linearGradient x1="115.64738%" y1="-16.611735%" x2="-28.6621094%" y2="129.600016%" id="c39c6655-cf55-46bb-a4c7-f510fd8bc124">

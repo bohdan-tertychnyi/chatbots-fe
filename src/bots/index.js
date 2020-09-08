@@ -1,6 +1,22 @@
 import { send, watch } from '../sockets';
+import config from '../config';
 
-export const BOTNAME_LIST = ['john_snow', 'martin', 'sherlock', 'monica', 'dallas'];
+const { apiUrl } = config;
+
+export const fetchBots = async () => {
+  try {
+    const bots = await fetch(`${apiUrl}/bots`);
+
+    const response = await bots.json();
+
+    return response;
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.log('Error: ', e);
+
+    return undefined;
+  }
+};
 
 export const requestBot = ({ botId, message }) => send({ type: 'request-bot', data: { botId, message } });
 
