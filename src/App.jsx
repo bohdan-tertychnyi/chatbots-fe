@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetchBots();
+      const response = await fetchBots() || [{}];
 
       setBots(response);
       setActiveTab(response[0].name);
