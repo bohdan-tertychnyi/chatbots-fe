@@ -20,8 +20,8 @@ function App() {
   return (
     <main className="main">
       <div className="container">
-        <div className="row">
-          <div className="col-9">
+        <div className="row row-chat">
+          <div className="col-9 col-chat-wrap">
             <div className="chat-wrap">
               <BotsMenu bots={bots} activeTab={activeTab} setActiveTab={setActiveTab} />
               {/* <!--class="chat-block blocked" for blocked chat--> */}
@@ -32,7 +32,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="col-3" style={{ color: 'white' }}>
+          <div className="col-3 branding-wrap" style={{ color: 'white' }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 195.60606384277344 50"
@@ -63,10 +63,11 @@ function App() {
                 </g>
               </g>
             </svg>
-            Тестовое задание на позицию:
-            {' '}
-            <br />
-            <b style={{ float: 'right' }}>Frontend Developer</b>
+            <div>
+              Тестовое задание на позицию:
+              <br />
+              <b style={{ float: 'right', display: 'inline' }}>Frontend Developer</b>
+            </div>
           </div>
         </div>
       </div>

@@ -18,7 +18,7 @@ const Messages = ({ activeTab, messages, bots = [] }) => {
   const background = useMemo(() => COLOR_LIST[botIndex], [botIndex]);
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className="messages" style={{ position: 'relative' }}>
       <div className="chat" style={{ background }}>
         {messages.map(({ value, createTime, author }) => <Message key={createTime} createTime={createTime} message={value} isFromUser={author === 'user'} imgSrc={imgSrc} />)}
       </div>

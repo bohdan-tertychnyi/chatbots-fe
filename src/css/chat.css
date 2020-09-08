@@ -8,16 +8,25 @@
     align-items: stretch;
 }
 
+
 .contacts-wrap {
     width: 240px;
     min-width: 240px;
     overflow: hidden;
 }
 
+
 .chat-block {
     flex-grow: 1;
     min-width: 680px;
     max-width: 680px;
+}
+
+@media (max-width: 1250px) {
+    .chat-block {
+        min-width: unset;
+        max-width: unset;
+    }
 }
 
 .contacts-search {
@@ -294,6 +303,7 @@
 }
 
 .blocked-wrap {
+    /* height: 80%; */
     position: relative;
 }
 
@@ -370,4 +380,100 @@
 
 .chat-form {
     padding: 22px 16px 16px 16px;
+}
+
+@media (max-width: 1250px) {
+    .row-chat {
+        flex: unset !important;
+        flex-direction: column-reverse;
+        flex-wrap: nowrap !important;
+        max-width: unset !important;
+        justify-content: space-between;
+        width: 100% !important;
+        height: auto;
+    }
+
+    .blocked-wrap {
+        height: 100%;
+    }
+
+    .col-chat-wrap {
+        width: 100% !important;
+        max-width: unset !important;
+        flex: unset !important;
+        flex-shrink: 0 !important;
+        flex-basis: 80% !important;
+        flex-wrap: unset;
+    }
+
+    .chat {
+        height: 100%;
+    }
+
+    .chat-wrap {
+        height: 100%;
+    }
+
+    .branding-wrap {
+        flex: unset !important;
+        max-width: unset !important;
+        width: 30% !important;
+        height: auto !important;
+        margin-bottom: 16px;
+    }
+
+    .messages {
+        height: 75%;
+    }
+
+    .chat-form {
+        height: 25%;
+    }
+} 
+
+@media (max-width: 700px) {
+    .chat-wrap {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .chat {
+        height: 100%;
+    }
+
+    .contacts-wrap {
+        flex-shrink: 0;
+        min-width: unset !important;
+        width: 100% !important;
+        height: 80px;
+    }
+
+    .contact {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding-bottom: 0;
+        overflow: auto;
+    }
+
+    .contact-user {
+        height: 100%;
+    }
+
+    .contact-user-name {
+        display: none;
+    }
+
+    .contact-user-name.active {
+        display: block;
+    }
+
+    .chat-block {
+        flex-grow: unset !important;
+        height: 100%;
+    }
+
+    .branding-wrap {
+        width: 50% !important;
+    }
 }

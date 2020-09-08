@@ -2,8 +2,8 @@
 
 /*start style grid*/
 .container {
-    min-width: 1248px;
-    width: 1248px;
+    max-width: 1248px;
+    width: 100%;
     height: 100%;
     margin-right: auto;
     margin-left: auto;
@@ -159,7 +159,6 @@
 body {
     height: 100vh;
     width: 100%;
-    min-width: 1248px;
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: 400;

@@ -26,17 +26,18 @@ const Form = ({ addMessage, botId }) => {
 
   return (
     <div className="chat-form">
-      <form>
-        <div className="textarea-wrap">
+      <form style={{ height: '100%' }}>
+        <div className="textarea-wrap" style={{ height: '80%' }}>
           <textarea
             placeholder="Text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             ref={textarea}
             onKeyDown={handleKeyDown}
+            style={{ height: '100%' }}
           />
         </div>
-        <div className="textarea-count-wrap">
+        <div className="textarea-count-wrap" style={{ height: '20%' }}>
           <div className="checkbox-wrap">
             Press Enter to send
           </div>

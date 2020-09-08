@@ -11,7 +11,7 @@ const ContactUser = ({
     </div>
     <div className="contact-user-info">
       <div className="contact-user-top">
-        <a href="#" className="contact-user-name">
+        <a href="#" className={`contact-user-name ${isActive ? 'active' : ''}`}>
           {name}
         </a>
       </div>
